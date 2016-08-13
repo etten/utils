@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Etten\Utils;
 
-class FooTest extends \PHPUnit_Framework_TestCase
+class FilesTest extends \PHPUnit_Framework_TestCase
 {
 
 	public function testCreateFile1()
