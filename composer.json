@@ -1,0 +1,24 @@
+{
+	"name": "etten/utils",
+	"description": "Etten\\Utils",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Jaroslav Hranička",
+			"email": "hranicka@outlook.com"
+		}
+	],
+	"require": {
+		"php": ">=7.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^5.5",
+		"squizlabs/php_codesniffer": "~2.6.0",
+		"etten/codestyle": "^2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Etten\\Utils\\": "src/"
+		}
+	}
+}
