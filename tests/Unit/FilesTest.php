@@ -37,7 +37,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
 			$files = new Utils\Files();
 			$path = __DIR__ . '/../temp/' . bin2hex(random_bytes(5));
 			$this->assertSame($path, $files->createDirectory($path));
-			$this->assertSame(0775, fileperms($path) & 0777);
+			$this->assertSame(0777, fileperms($path) & 0777);
 		} else {
 			$this->markTestSkipped('Linux-only.');
 		}

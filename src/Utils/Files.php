@@ -18,21 +18,31 @@ class Files
 				throw new Etten\IOException(sprintf('Unable to create file %s.', $path));
 			}
 
-			if (!chmod($path, $chmod)) {
-				throw new Etten\IOException(sprintf('Unable to chmod file %s as $chmod.', $path, $chmod));
-			}
+			$this->chmod($path, $chmod);
 		}
 
 		return $path;
 	}
 
-	public function createDirectory(string $path, int $chmod = 0775): string
+	public function createDirectory(string $path, int $chmod = 0777): string
 	{
-		if (!is_dir($path) && !@mkdir($path, $chmod, TRUE)) { // intentionally @; not atomic
-			throw new Etten\IOException(sprintf('Unable to create directory %s.', $path));
+		if (!is_dir($path)) {
+			// Intentionally @; not atomic.
+			if (!@mkdir($path, $chmod, TRUE)) {
+				throw new Etten\IOException(sprintf('Unable to create directory %s.', $path));
+			}
+
+			$this->chmod($path, $chmod);
 		}
 
 		return $path;
+	}
+
+	private function chmod(string $path, int $chmod)
+	{
+		if (!chmod($path, $chmod)) {
+			throw new Etten\IOException(sprintf('Unable to chmod directory %s as %s.', $path, $chmod));
+		}
 	}
 
 }
