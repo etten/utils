@@ -15,7 +15,7 @@ class Files
 	 * @param int $chmod
 	 * @return string Created file path.
 	 */
-	public function create(string $path, int $chmod = 0777)
+	public function create(string $path, int $chmod = 0666)
 	{
 		if (!is_file($path)) {
 			touch($path); // ensures ordinary file permissions
